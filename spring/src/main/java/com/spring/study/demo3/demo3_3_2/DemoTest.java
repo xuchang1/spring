@@ -1,13 +1,13 @@
-package com.spring.study.demo3.demo3_3_3;
+package com.spring.study.demo3.demo3_3_2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * spring qualifier自定义注解的使用
+ * spring Primary注解的使用
  */
-public class ProfileTest {
+public class DemoTest {
 
     @Test
     public void test1() {
