@@ -3,6 +3,9 @@ package com.spring.study.demo3.demo3_1;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+/**
+ * spring Profile注解的使用
+ */
 public class ProfileTest {
 
     @Test
