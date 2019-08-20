@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <bean id="man" class="com.spring.study.demo4.demo4_4.Man"/>
+    <bean id="personAspect" class="com.spring.study.demo4.demo4_4.PersonAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="personAspect">
+            <!--无参-->
+            <!--<aop:pointcut id="say" expression="execution(* com.spring.study.demo4.demo4_4.Person.say())"/>
+            <aop:before pointcut-ref="say" method="doSayBefore"/>-->
+
+            <!--有参-->
+            <aop:pointcut id="call" expression="execution(* com.spring.study.demo4.demo4_4.Person.call
+                (com.spring.study.demo4.demo4_4.PersonVo)) and args(vo)"/>
+            <aop:before method="doCallBefore" pointcut-ref="call" />
+
+            <aop:around method="doCallAround" pointcut-ref="call"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
