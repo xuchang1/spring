@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="man" class="com.spring.study.demo4.demo4_5.Man" />
+    <bean id="defaultPersonExtend" class="com.spring.study.demo4.demo4_5.DefaultPersonExtend" />
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <aop:config>
+        <aop:aspect>
+            <!-- types-matching : 需要扩展功能的类，表示Person的所有实现类
+                 implement-interface : 需要扩展的功能，只能扩展接口
+                 delegate-ref : 扩展功能接口的默认实现
+                 基于xml引入新的功能，直接写到aop aspect的标签中-->
+            <aop:declare-parents types-matching="com.spring.study.demo4.demo4_5.Person+"
+                                 implement-interface="com.spring.study.demo4.demo4_5.PersonExtend"
+                                 delegate-ref="defaultPersonExtend" />
+        </aop:aspect>
+    </aop:config>
+</beans>
